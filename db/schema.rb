@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_13_091248) do
+ActiveRecord::Schema.define(version: 2020_11_13_092902) do
 
   create_table "accounts", force: :cascade do |t|
     t.string "user_name"
@@ -75,6 +75,20 @@ ActiveRecord::Schema.define(version: 2020_11_13_091248) do
     t.index ["account_id"], name: "index_orders_on_account_id"
   end
 
+  create_table "product_orders", force: :cascade do |t|
+    t.integer "order_id", null: false
+    t.integer "product_id", null: false
+    t.integer "purchased_quantity"
+    t.decimal "purchased_price"
+    t.decimal "purchased_pst"
+    t.decimal "purchased_gst"
+    t.decimal "purchased_hst"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["order_id"], name: "index_product_orders_on_order_id"
+    t.index ["product_id"], name: "index_product_orders_on_product_id"
+  end
+
   create_table "products", force: :cascade do |t|
     t.text "description"
     t.string "name"
@@ -107,6 +121,8 @@ ActiveRecord::Schema.define(version: 2020_11_13_091248) do
 
   add_foreign_key "accounts", "provinces"
   add_foreign_key "orders", "accounts"
+  add_foreign_key "product_orders", "orders"
+  add_foreign_key "product_orders", "products"
   add_foreign_key "products", "developers"
   add_foreign_key "products", "publishers"
 end
