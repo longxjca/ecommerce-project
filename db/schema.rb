@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_13_231410) do
+ActiveRecord::Schema.define(version: 2020_11_13_231738) do
 
   create_table "accounts", force: :cascade do |t|
     t.string "user_name"
@@ -117,6 +117,7 @@ ActiveRecord::Schema.define(version: 2020_11_13_231410) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "image"
+    t.string "trailer"
     t.index ["developer_id"], name: "index_products_on_developer_id"
     t.index ["publisher_id"], name: "index_products_on_publisher_id"
   end
