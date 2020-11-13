@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  account: one
+  subtotal: 9.99
+  status: MyString
+  shipping_address: MyString
+  stripe_intent_id: 1
+
+two:
+  account: two
+  subtotal: 9.99
+  status: MyString
+  shipping_address: MyString
+  stripe_intent_id: 1
