@@ -12,4 +12,6 @@ class Product < ApplicationRecord
   validates :name, presence: true
 
   has_one_attached :avatar
+
+  accepts_nested_attributes_for :genre_products, allow_destroy: true
 end

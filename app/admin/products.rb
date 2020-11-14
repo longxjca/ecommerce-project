@@ -4,15 +4,39 @@ ActiveAdmin.register Product do
   #
   # Uncomment all parameters which should be permitted for assignment
   #
-  permit_params :description, :name, :price, :developer_id, :publisher_id, :release_date, :status, :avatar
+  permit_params :description, :name, :price, :developer_id, :publisher_id, :release_date, :status, :avatar, genre_products_attributes: %i[id product_id genre_id _destroy]
+
+  # show do |product|
+  #   attributes_table do
+  #     row :name
+  #     row :price
+  #     row :genres do |product|
+  #       product.genres.map { |bg| bg.name }.join(", ").html_safe
+  #     end
+  #   end
+  # end
 
   form do |f|
     f.semantic_errors # shows errors on :base
-    f.inputs          # builds an input field for every attribute
+
+    f.inputs "Product" do
+      f.input :developer_id, as: :select
+      f.input :publisher_id, as: :select
+      f.input :description
+      f.input :name
+      f.input :price
+      f.input :release_date
+      f.input :status
+      # f.input :image
+      f.has_many :genre_products, allow_destroy: true do |n_f|
+        n_f.input :genre
+      end
+    end
+
     f.inputs do
       f.input :avatar, as: :file
     end
-    f.actions         # adds the 'Submit' and 'Cancel' buttons
+    f.actions # adds the 'Submit' and 'Cancel' buttons
   end
   #
   # or
