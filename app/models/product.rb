@@ -7,4 +7,7 @@ class Product < ApplicationRecord
 
   has_many :genre_products
   has_many :genres, through: :genre_products
+
+  validates :name, uniqueness: true
+  validates :name, presence: true
 end
