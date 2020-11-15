@@ -91,6 +91,10 @@ games[0..99].each do |game|
     genre = Genre.find_or_create_by(name: genre_name)
     GenreProduct.create(genre: genre, product: product_entry)
   end
+  # downloaded_image = open(URI.escape("https://source.unsplash.com/600x600/?#{[horse.name, breed.name].join(',')}"))
+  downloaded_image = open(URI.escape("https://steamcdn-a.akamaihd.net/steam/apps/#{game[:appid]}/header.jpg"))
+  product_entry.avatar.attach(io: downloaded_image, filename: "m-#{product_entry.name}.jpg")
+  sleep(1) # Throttle a tad. Needed?
 
   # puts publisher_entry.inspect
 end
