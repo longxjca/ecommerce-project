@@ -1,6 +1,15 @@
 <div class="column">
 
 <div class="card">
+<% if product.avatar.present?%>
+<div class= "card-image">
+<figure class="image is-4by3">
+ <%= image_tag product.avatar%>
+</figure>
+
+</div>
+
+<% end %>
 <div class="card-content">
     <div class="content">
       <p class="title"><%= link_to product.name, product%></p>
