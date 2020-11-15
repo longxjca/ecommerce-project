@@ -1,2 +1,8 @@
-<h1>Genres#show</h1>
-<p>Find me in app/views/genres/show.html.erb</p>
+<h3>this genre has  <%= @genre.products.count %> products</h3>
+  <ul>
+    <% @genre.products.each do |product| %>
+      <li>
+        <%= link_to product.name, product_path(product)%>
+      </li>
+    <% end %>
+  </ul>

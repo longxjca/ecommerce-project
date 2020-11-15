@@ -5,11 +5,25 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
+
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
+    <p>
+        <%= link_to 'Home', root_path %> |
+        <%= link_to 'Products', products_path%> |
+        <%= link_to 'Genres', genres_path%> |
+        <%= link_to 'About us', permalink_path('about_us')%> |
+
+
+        <br>
+        <br>
+
+
+    </p>
     <%= yield %>
   </body>
 </html>

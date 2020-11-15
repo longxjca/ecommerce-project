@@ -1,2 +1,16 @@
-<h1>Products#index</h1>
-<p>Find me in app/views/products/index.html.erb</p>
+<% if @products.empty? %>
+  <p>There are no products available</p>
+<% else %>
+  <h2 class="title is-2">There are <%= @products.count%> products </h2>
+
+  <% @products.each do |product| %>
+    <ul>
+      <li>
+        <%=link_to product.name, product %>
+
+
+      </li>
+    </ul>
+
+  <% end %>
+<% end %>
