@@ -28,6 +28,8 @@ steam_csv = Rails.root + "db/steam.csv"
 games = SmarterCSV.process(steam_csv, { col_sep: "\t" }) # Pass the 'options' hash as a second argument if CSV was created by Excel.
 # games = CSV.parse(steam_csv, headers: true, encoding: "utf-8")
 # description_csv = File.read(Rails.root.join("db/steam_description_data.csv"))
+description_csv = Rails.root + "db/steam_description_data.csv"
+descriptions = SmarterCSV.process(description_csv, { col_sep: "\t" })
 # descriptions = CSV.parse(description_csv, headers: true, encoding: "utf-8")
 # descriptions = SmarterCSV.process(description_csv, options)
 # media_csv = File.read(Rails.root.join("db/steam_media_data.csv"))
@@ -38,13 +40,14 @@ games = SmarterCSV.process(steam_csv, { col_sep: "\t" }) # Pass the 'options' ha
 # Developer.create(name: "Not Exist")
 # puts games[0..2]
 games[0..99].each do |game|
-  # game_description = ""
-  # descriptions.each do |description|
-  #   if description["steam_appid"] == game["appid"]
-  #     game_description = description["detailed_description"]
-  #     break
-  #   end
-  # end
+  game_description = ""
+  descriptions.each do |description|
+    if description[:steam_appid] == game[:appid]
+      game_description = description[:short_description]
+      break
+    end
+  end
+  # puts game_description
   # puts "*********************************"
   # puts game
   # puts "|||||||||||||||||||||||||||||"
@@ -67,7 +70,8 @@ games[0..99].each do |game|
   publisher_entry = Publisher.find_or_create_by(name: game[:publisher])
   # genre_entry = Genre.find_or_create_by(name: game[:genres])
 
-  product_entry = Product.find_or_create_by(name:         game[:name],
+  product_entry = Product.find_or_create_by(description:  game_description,
+                                            name:         game[:name],
                                             price:        game[:price],
                                             developer:    developer_entry,
                                             publisher:    publisher_entry,
