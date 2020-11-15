@@ -2,15 +2,6 @@
   <p>There are no genres available</p>
 <% else %>
   <h2 class="title is-2">There are <%= @genres.count%> genres </h2>
+<%= render @genres%>
 
-  <% @genres.each do |genre| %>
-    <ul>
-      <li>
-        <%=link_to genre.name, genre_path(genre) %>
-
-
-      </li>
-    </ul>
-
-  <% end %>
 <% end %>

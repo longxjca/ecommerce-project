@@ -1,8 +1,6 @@
+
+
+<%= render @product%>
 <h3>this game belongs to  <%= @product.genres.count %> genres</h3>
-  <ul>
-    <% @product.genres.each do |genre| %>
-      <li>
-        <%= link_to genre.name, genre_path(genre)%>
-      </li>
-    <% end %>
-  </ul>
+ <%= render @product.genres%>
+

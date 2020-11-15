@@ -3,14 +3,6 @@
 <% else %>
   <h2 class="title is-2">There are <%= @products.count%> products </h2>
 
-  <% @products.each do |product| %>
-    <ul>
-      <li>
-        <%=link_to product.name, product %>
-
-
-      </li>
-    </ul>
-
+<%= render @products%>
   <% end %>
-<% end %>
+
