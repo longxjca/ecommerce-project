@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'home/index'
   get 'genres/index'
   get 'genres/show'
   get 'products/index'
