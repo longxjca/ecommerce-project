@@ -34,6 +34,8 @@ descriptions = SmarterCSV.process(description_csv, { col_sep: "\t" })
 # descriptions = SmarterCSV.process(description_csv, options)
 # media_csv = File.read(Rails.root.join("db/steam_media_data.csv"))
 # images = CSV.parse(media_csv, headers: true, encoding: "utf-8")
+media_csv = Rails.root + "db/steam_media_data.csv"
+images = SmarterCSV.process(media_csv, { col_sep: "\t" })
 # puts games
 
 # Publisher.create(name: "Not Exist")
@@ -44,6 +46,13 @@ games[0..99].each do |game|
   descriptions.each do |description|
     if description[:steam_appid] == game[:appid]
       game_description = description[:short_description]
+      break
+    end
+  end
+  game_image = ""
+  images.each do |image|
+    if image[:steam_appid] == game[:appid]
+      game_image = image[:header_image]
       break
     end
   end
@@ -75,7 +84,8 @@ games[0..99].each do |game|
                                             price:        game[:price],
                                             developer:    developer_entry,
                                             publisher:    publisher_entry,
-                                            release_date: game[:release_date])
+                                            release_date: game[:release_date],
+                                            image:        game_image)
   genres = game[:genres].split(";")
   genres.each do |genre_name|
     genre = Genre.find_or_create_by(name: genre_name)
