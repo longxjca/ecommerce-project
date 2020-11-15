@@ -20,13 +20,14 @@ ActiveAdmin.register Product do
     f.semantic_errors # shows errors on :base
 
     f.inputs "Product" do
-      f.input :developer_id, as: :select
-      f.input :publisher_id, as: :select
+      f.input :developer, as: :select
+      f.input :publisher, as: :select
       f.input :description
       f.input :name
       f.input :price
       f.input :release_date
       f.input :status
+      f.input :image
       # f.input :image
       f.has_many :genre_products, allow_destroy: true do |n_f|
         n_f.input :genre
