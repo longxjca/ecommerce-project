@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'genres/index'
+  get 'genres/show'
   get 'products/index'
   get 'products/show'
   devise_for :admin_users, ActiveAdmin::Devise.config
