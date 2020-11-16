@@ -1,8 +1,6 @@
-<% if @products.empty? %>
-  <p>There are no products available</p>
-<% else %>
-  <h2 class="title is-2">There are <%= @products.count%> products </h2>
 
+<div class="columns is-multiline">
 <%= render @products%>
-  <% end %>
+</div>
+
 
