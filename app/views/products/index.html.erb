@@ -1,6 +1,14 @@
+<div class = container>
+  <div class = "notification is-primary">
+    <%= paginate @products %>
+    <div class="columns is-multiline">
+      <%= render @products%>
 
-<div class="columns is-multiline">
-<%= render @products%>
+    </div>
+    <%= paginate @products %>
+
+  </div>
+
 </div>
 
 

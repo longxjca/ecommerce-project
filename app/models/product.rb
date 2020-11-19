@@ -14,4 +14,6 @@ class Product < ApplicationRecord
   has_one_attached :avatar
 
   accepts_nested_attributes_for :genre_products, allow_destroy: true
+
+  paginates_per 50
 end
