@@ -1,14 +1,16 @@
-<div class = container>
-  <div class = "notification is-primary">
+
+<div class="mb-5">
     <%= paginate @products %>
+</div>
     <div class="columns is-multiline">
       <%= render partial: 'product', collection: @products, locals: {show_link: true}%>
 
     </div>
-    <%= paginate @products %>
 
-  </div>
 
-</div>
+
+
+
+
 
 
