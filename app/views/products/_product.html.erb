@@ -1,25 +1,32 @@
+
+
 <div class="column">
 
 <div class="card">
-<% if product.avatar.present?%>
-<div class= "card-image">
-<figure class="image is-600x600">
- <%= image_tag product.avatar.variant(resize_to_limit: [600, 600])%>
-</figure>
+  <% if product.avatar.present?%>
+  <div class= "card-image">
+  <figure class="image is-600x600">
+    <%= image_tag product.avatar.variant(resize_to_limit: [600, 600])%>
+  </figure>
 
 </div>
 
 <% end %>
 <div class="card-content">
     <div class="content">
-      <p class="title"><%= link_to product.name, product%>
+      <p class="title">
+      <% if show_link %>
+        <%= link_to product.name, product%>
+      <% else %>
+        <%= product.name%>
+      <% end %>
       </p>
-      <p>Genre: <%= render product.genres%></p>
+      <p>Genre:<%= render product.genres%></p>
     </div>
     <footer class="card-footer">
       <p class= "card-footer-item">Price:<%= product.price%></p>
-      <p class= "card-footer-item">Release date:<%= product.release_date%></p>
-      <p class= "card-footer-item">Publisher: <%= product.publisher.name%></p>
+      <p class= "card-footer-item">Developer:<%= product.developer.name%></p>
+      <p class= "card-footer-item">Publisher:<%= product.publisher.name%></p>
     </footer>
 
 </div>

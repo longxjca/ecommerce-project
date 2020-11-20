@@ -1,7 +1,7 @@
 
 <div class="columns is-multiline">
   <div class="column">
-  <%= render @product%>
+  <%= render partial: 'product', object: @product, locals: {show_link: false} %>
   </div>
     <div class="column">
     <h2 class="title is-2">Game Description:</h2>
