@@ -28,6 +28,7 @@ ActiveAdmin.register Product do
       f.input :release_date
       f.input :status
       f.input :image
+      f.input :avatar
       # f.input :image
       f.has_many :genre_products, allow_destroy: true do |n_f|
         n_f.input :genre

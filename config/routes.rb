@@ -11,8 +11,8 @@ Rails.application.routes.draw do
 
   # get "search", to: "products#search", as: "search"
   root to: "home#index"
-  get "products", to: "products#index"
-  get "products/:id", to: "products#show", id: /\d+/, as: "product"
+  # get "products", to: "products#index"
+  # get "products/:id", to: "products#show", id: /\d+/, as: "product"
 
   get "genres", to: "genres#index"
   get "genres/:id", to: "genres#show", id: /\d+/, as: "genre"
