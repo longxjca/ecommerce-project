@@ -1,6 +1,14 @@
 <h3 class="title is-4">this genre has  <%= @genre.products.count %> products</h3>
-<div class="columns is-multiline">
+
+
+<div class = container>
+  <div class = "notification is-primary">
+
+ <div class="columns is-multiline">
 
   <%= render partial: 'products/product', collection: @genre.products, locals: {show_link: true} %>
+
+</div>
+  </div>
 
 </div>

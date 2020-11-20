@@ -15,5 +15,5 @@ class Product < ApplicationRecord
 
   accepts_nested_attributes_for :genre_products, allow_destroy: true
 
-  paginates_per 50
+  paginates_per 9
 end
