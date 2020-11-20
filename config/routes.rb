@@ -8,13 +8,20 @@ Rails.application.routes.draw do
   # get 'genres/show'
   # get 'products/index'
   # get 'products/show'
-  get "search", to: "products#search", as: "search"
+
+  # get "search", to: "products#search", as: "search"
   root to: "home#index"
   get "products", to: "products#index"
   get "products/:id", to: "products#show", id: /\d+/, as: "product"
 
   get "genres", to: "genres#index"
   get "genres/:id", to: "genres#show", id: /\d+/, as: "genre"
+
+  resources :products, only: %i[index show] do
+    collection do
+      get "search"
+    end
+  end
 
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)

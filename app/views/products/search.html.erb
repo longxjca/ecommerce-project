@@ -1,6 +1,7 @@
 <div class= "columns">
-  <%= render partial: 'products/product',
-             collections: @products      %>
+  <%= render partial: 'product',
+             collections: @products,
+             locals: { show_link: true} %>
 
 
 </div>
