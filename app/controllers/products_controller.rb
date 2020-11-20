@@ -9,6 +9,14 @@ class ProductsController < ApplicationController
   end
 
   def search
-    @products = Product.where("name LIKE ?", "%#{params[:keywords]}%")
+    wildcard_search = "%#{params[:keywords]}%"
+    genre_filter = params[:category]
+    if params[:category].present?
+      @products = Product.joins(:genres).where("genres.name"=>genre_filter).where("products.name LIKE ? OR description LIKE ?", wildcard_search, wildcard_search)
+
+    else
+      @products = Product.where("name LIKE ? OR description LIKE ?", wildcard_search, wildcard_search)
+
+    end
   end
 end
