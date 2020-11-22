@@ -14,6 +14,8 @@ Rails.application.routes.draw do
   # get "products", to: "products#index"
   # get "products/:id", to: "products#show", id: /\d+/, as: "product"
 
+  get "products/filter_by_new", to: "products#filter_by_new"
+  get "products/filter_by_updated", to: "products#filter_by_updated"
   get "genres", to: "genres#index"
   get "genres/:id", to: "genres#show", id: /\d+/, as: "genre"
 

@@ -23,6 +23,13 @@
     ]))%>
 
   </div>
+  <div class="control is-expanded">
+    <%= select_tag(:time, options_for_select([
+      ['All Times', 'All Times'],
+      ['New', 'New'],
+      ['Recently Updated', 'Recently Updated']
+    ]))%>
+  </div>
 
   <div class="control">
    <%= submit_tag("Search", class: "button is-primary") %>

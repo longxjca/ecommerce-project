@@ -4,12 +4,11 @@
     <%= paginate @products %>
 </div>
     <div class="columns is-multiline">
+
       <%= render partial: 'product', collection: @products, locals: {show_link: true}%>
 
     </div>
-   <div class="mb-5">
     <%= paginate @products %>
-</div>
 
   </div>
 
