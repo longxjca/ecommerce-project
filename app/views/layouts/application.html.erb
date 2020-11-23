@@ -34,6 +34,9 @@
       </header>
       <%= render partial: 'products/search'%>
       <%= render partial: 'products/navbar'%>
+      <p>
+    You have vistied this site <%= pluralize @visit_count, 'time'%>
+</p>
       <%= yield %>
     </div>
     </section>

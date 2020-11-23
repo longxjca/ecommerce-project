@@ -1,11 +1,13 @@
 class ProductsController < ApplicationController
+  before_action :initialize_session
+  before_action :increment_visit_count, only: %i[index about]
   def index
     # @products = Product.order(:name)
     @products = Product.includes(:developer).order("name").includes(:publisher).order("name").includes(:genres).page(params[:page])
 
-    session[:visit_count] ||= 0
-    session[:visit_count] += 1
-    @visit_count = session[:visit_count]
+    # session[:visit_count] ||= 0
+    # session[:visit_count] += 1
+    # @visit_count = session[:visit_count]
   end
 
   def show
@@ -42,4 +44,14 @@ class ProductsController < ApplicationController
   # def filter_by_updated
   #   @products = Product.where(updated_at: (Time.now.getlocal - 1.day)..Time.now.getlocal)
   # end
+  private
+
+  def initialize_session
+    session[:visit_count] ||= 0
+  end
+
+  def increment_visit_count
+    session[:visit_count] += 1
+    @visit_count = session[:visit_count]
+  end
 end
