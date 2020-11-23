@@ -49,6 +49,8 @@ class ProductsController < ApplicationController
   def add_to_cart
     id = params[:id].to_i
     session[:cart] << id unless session.include?(id)
+    flash[:notice] = "Item added to cart"
+
     redirect_to product_path(id)
   end
 

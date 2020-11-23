@@ -6,7 +6,7 @@
 
   <ul>
     <% @cart.each do |product|%>
-      <li><%= product.name%>-<%= link_to 'remove from cart', remove_from_cart_path(product), method: :delete, params: {id:product.id}%></li>
+      <li><%= product.name%> -  - <%= link_to 'remove from cart', remove_from_cart_path(product), method: :delete, params: {id:product.id}%></li>
     <% end %>
 
   </ul>

@@ -23,6 +23,19 @@
       </p>
       <p>Genre:<%= render product.genres%></p>
     </div>
+    <% if load_cart.include?(product) %>
+      <%= button_to remove_from_cart_path(product), method: :delete do %>
+         Remove From Cart
+      <% end %>
+
+    <% else %>
+      <%= form_with url: add_to_cart_path(product), method: :post do %>
+        <%= hidden_field_tag(:id, product.id)%>
+        <%= button_tag 'Add to Cart'%>
+      <% end %>
+    <% end %>
+
+
     <footer class="card-footer">
       <p class= "card-footer-item">Price:<%= product.price%></p>
       <p class= "card-footer-item">Developer:<%= product.developer.name%></p>

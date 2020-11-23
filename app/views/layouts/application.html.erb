@@ -37,6 +37,9 @@
       <p>
     You have vistied this site <%= pluralize @visit_count, 'time'%>
 </p>
+    <% if flash[:notice] %>
+      <p><%= flash[:notice]%></p>
+    <% end %>
       <%= yield %>
     </div>
     </section>
