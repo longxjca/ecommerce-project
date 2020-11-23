@@ -1,4 +1,17 @@
+<details>
+  <summary>Shopping Cart</summary>
+  <% if @cart.empty? %>
+    <p>No games in cart.</p>
+  <% else %>
 
+  <ul>
+    <% @cart.each do |product|%>
+      <li><%= product.name%>-<%= link_to 'remove from cart', remove_from_cart_path(product), method: :delete, params: {id:product.id}%></li>
+    <% end %>
+
+  </ul>
+  <% end %>
+</details>
 <div class="columns is-multiline">
   <div class="column">
   <%= render partial: 'product', object: @product, locals: {show_link: false} %>
@@ -11,8 +24,15 @@
     <h3 class="title is-4">Publisher: </h3><div><%= @product.publisher.name%></div>
     <h3 class="title is-4">Release Date: </h3><div><%= @product.release_date%></div>
     <h3 class="title is-4">Price </h3><div><%= number_to_currency @product.price%></div>
+    <% if @cart.include?(@product) %>
+      <p><%= button_to 'remove from cart', remove_from_cart_path(@product), method: :delete, params: {id:@product.id}%></p>
+    <% else %>
+    <h3  class="title is-4">
+      <%= link_to 'add to cart',add_to_cart_path(@product.id), method: :post %>
+    </h3>
+
+    <% end %>
+
     </div>
-    <p>
-      <%= link_to 'add to cart', '#url'%>
-    </p>
+
 </div>

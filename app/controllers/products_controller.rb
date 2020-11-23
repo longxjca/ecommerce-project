@@ -1,6 +1,7 @@
 class ProductsController < ApplicationController
   before_action :initialize_session
   before_action :increment_visit_count, only: %i[index about]
+  before_action :load_cart
   def index
     # @products = Product.order(:name)
     @products = Product.includes(:developer).order("name").includes(:publisher).order("name").includes(:genres).page(params[:page])
@@ -44,10 +45,28 @@ class ProductsController < ApplicationController
   # def filter_by_updated
   #   @products = Product.where(updated_at: (Time.now.getlocal - 1.day)..Time.now.getlocal)
   # end
+
+  def add_to_cart
+    id = params[:id].to_i
+    session[:cart] << id unless session.include?(id)
+    redirect_to product_path(id)
+  end
+
+  def remove_from_cart
+    id = params[:id].to_i
+    session[:cart].delete(id)
+    redirect_to product_path(id)
+  end
+
   private
 
   def initialize_session
     session[:visit_count] ||= 0
+    session[:cart] ||= []
+  end
+
+  def load_cart
+    @cart = Product.find(session[:cart])
   end
 
   def increment_visit_count
