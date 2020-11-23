@@ -2,6 +2,10 @@ class ProductsController < ApplicationController
   def index
     # @products = Product.order(:name)
     @products = Product.includes(:developer).order("name").includes(:publisher).order("name").includes(:genres).page(params[:page])
+
+    session[:visit_count] ||= 0
+    session[:visit_count] += 1
+    @visit_count = session[:visit_count]
   end
 
   def show
