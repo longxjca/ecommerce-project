@@ -10,6 +10,6 @@
     <h3 class="title is-4">Developer: </h3><div><%= @product.developer.name%></div>
     <h3 class="title is-4">Publisher: </h3><div><%= @product.publisher.name%></div>
     <h3 class="title is-4">Release Date: </h3><div><%= @product.release_date%></div>
-    <h3 class="title is-4">Price </h3><div><%= @product.price%></div>
+    <h3 class="title is-4">Price </h3><div><%= number_to_currency @product.price%></div>
     </div>
 </div>
