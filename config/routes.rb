@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :users
   resources :pages, except: [:show]
   get "/pages/:permalink" => "pages#permalink", as: :permalink
 
