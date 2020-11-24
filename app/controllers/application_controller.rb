@@ -1,6 +1,5 @@
 class ApplicationController < ActionController::Base
   before_action :initialize_session
-  before_action :increment_visit_count, only: %i[index about]
   helper_method :load_cart
 
   private
