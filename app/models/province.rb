@@ -1,5 +1,5 @@
 class Province < ApplicationRecord
-  has_many :accounts
+  has_many :users
 
   validates :name, uniqueness: true
   validates :name, presence: true
