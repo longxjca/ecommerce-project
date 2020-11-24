@@ -1,6 +1,13 @@
 class ApplicationController < ActionController::Base
   before_action :initialize_session
   helper_method :load_cart
+  before_action :add_permitted_parameters, if: :devise_controller?
+
+  protected
+
+  def add_permitted_parameters
+    devise_parameter_sanitizer.permit(:sign_up, keys: %i[default_shipping_address province_id])
+  end
 
   private
 
