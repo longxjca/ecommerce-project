@@ -31,33 +31,11 @@
     <div class="container">
       <header>
         <h1 class="title is-1"><%= link_to 'Online Game Shop', root_path%></h1>
-        <nav>
-          <%= link_to image_tag("cart.png",width: 60), root_path%>
-          <ul>
-            <li>
-              cart
-              <% if load_cart.present? %>
-                <sup>
-                  <%= load_cart.size%>
-                  <ul>
-                    <% load_cart.each do |product|%>
-                      <li>
-                        <%= product.name%> <%= link_to 'remove from cart', remove_from_cart_path(product), method: :delete%>
-                      </li>
-                    <% end %>
-                  </ul>
-                </sup>
 
-              <% end %>
-            </li>
-          </ul>
-        </nav>
       </header>
       <%= render partial: 'products/search'%>
       <%= render partial: 'products/navbar'%>
-      <p>
-    You have vistied this site <%= pluralize @visit_count, 'time'%>
-</p>
+
     <% if flash[:notice] %>
       <p><%= flash[:notice]%></p>
     <% end %>

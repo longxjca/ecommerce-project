@@ -23,16 +23,22 @@
       </p>
       <p>Genre:<%= render product.genres%></p>
     </div>
+
+     <%= form_with url: add_to_cart_path(product), method: :post do %>
+        <% hidden_field_tag(:id, product.id)%>
+        <div class="field is-grouped">
+            <%= number_field(:game, :quantity, min: 1, class: "input") %>
+            <%= button_tag(load_cart.include?(product) ? 'Update' : 'Add', class: "button is-primary") %>
+        </div>
+
+      <% end %>
     <% if load_cart.include?(product) %>
-      <%= button_to remove_from_cart_path(product), method: :delete do %>
+      <%= button_to(remove_from_cart_path(product), method: :delete, class: "button is-warning") do %>
          Remove From Cart
       <% end %>
 
-    <% else %>
-      <%= form_with url: add_to_cart_path(product), method: :post do %>
-        <%= hidden_field_tag(:id, product.id)%>
-        <%= button_tag 'Add to Cart'%>
-      <% end %>
+
+
     <% end %>
 
 

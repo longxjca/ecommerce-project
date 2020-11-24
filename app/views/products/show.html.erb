@@ -1,22 +1,7 @@
-<details>
-  <summary>Shopping Cart</summary>
-  <% if @cart.empty? %>
-    <p>No games in cart.</p>
-  <% else %>
 
-  <ul>
-    <% @cart.each do |product|%>
-      <li><%= product.name%> -  - <%= link_to 'remove from cart', remove_from_cart_path(product), method: :delete, params: {id:product.id}%></li>
-    <% end %>
-
-  </ul>
-  <% end %>
-</details>
 <div class="columns is-multiline">
-  <div class="column">
   <%= render partial: 'product', object: @product, locals: {show_link: false} %>
-  </div>
-    <div class="column">
+    <div class="column is-two-third">
     <h2 class="title is-2">Game Description:</h2>
     <div><%= @product.description%></div>
     <h3 class="title is-4">Genres: </h3><div><%= render @product.genres%></div>
@@ -24,7 +9,7 @@
     <h3 class="title is-4">Publisher: </h3><div><%= @product.publisher.name%></div>
     <h3 class="title is-4">Release Date: </h3><div><%= @product.release_date%></div>
     <h3 class="title is-4">Price </h3><div><%= number_to_currency @product.price%></div>
-    <% if @cart.include?(@product) %>
+    <% if load_cart.include?(@product) %>
       <p><%= button_to 'remove from cart', remove_from_cart_path(@product), method: :delete, params: {id:@product.id}%></p>
     <% else %>
     <h3  class="title is-4">

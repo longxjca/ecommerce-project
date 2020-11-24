@@ -6,10 +6,11 @@ class ApplicationController < ActionController::Base
 
   def initialize_session
     session[:visit_count] ||= 0
-    session[:cart] ||= []
+    session[:cart] ||= {}
   end
 
   def load_cart
-    Product.find(session[:cart])
+    session[:cart].transform_keys { |product_id| Product.find(product_id) }
+    # Product.find(session[:cart])
   end
 end

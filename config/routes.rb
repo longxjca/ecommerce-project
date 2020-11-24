@@ -25,8 +25,8 @@ Rails.application.routes.draw do
     end
   end
 
-  post "products/add_to_cart/:id", to: "products#add_to_cart", as: 'add_to_cart'
-  delete "products/remove_from_cart/:id", to: "products#remove_from_cart", as: 'remove_from_cart'
+  post "products/add_to_cart/:id", to: "products#add_to_cart", as: "add_to_cart"
+  delete "products/remove_from_cart/:id", to: "products#remove_from_cart", as: "remove_from_cart"
 
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
