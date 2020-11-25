@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  scope "/checkout" do
+    post "creat", to: "checkout#create", as: "checkout_create"
+    get "cancel", to: "checkout#cancel", as: "checkout_cancel"
+    get "success", to: "checkout#success", as: "checkout_success"
+  end
+
   devise_for :users
   resources :pages, except: [:show]
   get "/pages/:permalink" => "pages#permalink", as: :permalink
