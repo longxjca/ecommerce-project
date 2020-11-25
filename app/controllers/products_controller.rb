@@ -50,14 +50,14 @@ class ProductsController < ApplicationController
     session[:cart][id] = quantity
     flash[:notice] = "#{Product.find(id).name} added to your cart."
 
-    redirect_to root_path
+    redirect_to products_path
   end
 
   def remove_from_cart
     id = params[:id].to_i
     session[:cart].delete(id.to_s)
     flash[:notice] = "#{Product.find(id).name} removed from your cart."
-    redirect_to root_path
+    redirect_to products_path
   end
 
   private
