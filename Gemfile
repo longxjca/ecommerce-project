@@ -33,6 +33,7 @@ gem 'activeadmin'
 gem 'devise'
 
 gem 'smarter_csv'
+gem 'stripe'
 
 gem "image_processing"
 gem 'kaminari'
