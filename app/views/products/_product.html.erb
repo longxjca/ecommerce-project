@@ -24,6 +24,10 @@
       <p>Genre:<%= render product.genres%></p>
     </div>
 
+    <%= button_to(checkout_create_path, method: :post, params:{id: product.id}, class: "button is-primary", remote: true) do%>
+         Checkout 💳
+        <% end %>
+
      <%= form_with url: add_to_cart_path(product), method: :post do %>
         <% hidden_field_tag(:id, product.id)%>
         <div class="field is-grouped">
@@ -36,10 +40,8 @@
       <%= button_to(remove_from_cart_path(product), method: :delete, class: "button is-warning") do %>
          Remove From Cart
       <% end %>
-
-
-
     <% end %>
+
 
 
     <footer class="card-footer">
