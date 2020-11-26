@@ -24,7 +24,7 @@
       <p>Genre:<%= render product.genres%></p>
     </div>
 
-    <%= button_to(checkout_create_path, method: :post, params:{id: product.id}, class: "button is-primary", remote: true) do%>
+    <%= button_to(checkout_create_path, method: :post, class: "button is-primary", remote: true) do%>
          Checkout 💳
         <% end %>
 
