@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_25_011122) do
+ActiveRecord::Schema.define(version: 2020_11_27_075813) do
 
   create_table "accounts", force: :cascade do |t|
     t.string "user_name"
@@ -100,6 +100,9 @@ ActiveRecord::Schema.define(version: 2020_11_25_011122) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "user_id", null: false
+    t.decimal "purchased_pst"
+    t.decimal "purchased_gst"
+    t.decimal "purchased_hst"
     t.index ["user_id"], name: "index_orders_on_user_id"
   end
 
@@ -116,9 +119,6 @@ ActiveRecord::Schema.define(version: 2020_11_25_011122) do
     t.integer "product_id", null: false
     t.integer "purchased_quantity"
     t.decimal "purchased_price"
-    t.decimal "purchased_pst"
-    t.decimal "purchased_gst"
-    t.decimal "purchased_hst"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["order_id"], name: "index_product_orders_on_order_id"

@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   before_action :initialize_session
   helper_method :load_cart
+
   before_action :add_permitted_parameters, if: :devise_controller?
 
   protected
