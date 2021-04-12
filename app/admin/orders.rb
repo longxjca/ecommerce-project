@@ -1,15 +1,15 @@
-ActiveAdmin.register User do
+ActiveAdmin.register Order do
   # See permitted parameters documentation:
   # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
   #
   # Uncomment all parameters which should be permitted for assignment
   #
-  permit_params :email, :encrypted_password, :reset_password_token, :reset_password_sent_at, :remember_created_at, :province_id, :default_shipping_address, :fullname
+  permit_params :subtotal, :status, :shipping_address, :stripe_intent_id, :user_id, :purchased_pst, :purchased_gst, :purchased_hst
   #
   # or
   #
   # permit_params do
-  #   permitted = [:email, :encrypted_password, :reset_password_token, :reset_password_sent_at, :remember_created_at, :province_id, :default_shipping_address, :fullname]
+  #   permitted = [:subtotal, :status, :shipping_address, :stripe_intent_id, :user_id, :purchased_pst, :purchased_gst, :purchased_hst]
   #   permitted << :other if params[:action] == 'create' && current_user.admin?
   #   permitted
   # end

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :orders, only: [:index]
   scope "/checkout" do
     post "create", to: "checkout#create", as: "checkout_create"
     get "cancel", to: "checkout#cancel", as: "checkout_cancel"

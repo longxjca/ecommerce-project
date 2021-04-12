@@ -1,0 +1,55 @@
+<div class="is-primary">
+  <% @orders.each do |order| %>
+
+    <div class="box has-background-dark">
+        <div class="box has-background-primary">
+          <nav class="level">
+            <div class="level-item has-text-centered">
+              <div>
+                <p class="heading">Ordered at</p>
+                <p class="title is-5"><%= order.created_at %></p>
+              </div>
+            </div>
+            <div class="level-item has-text-centered">
+              <div>
+                <p class="heading">Status</p>
+                <p class="title is-5"><%= order.status %></p>
+              </div>
+            </div>
+            <div class="level-item has-text-centered">
+              <div>
+                <p class="heading">Grand Total</p>
+                <p class="title is-5"><%= order.subtotal %></p>
+              </div>
+            </div>
+          </nav>
+        </div>
+
+        <% order.product_orders.each do |detail| %>
+          <div class="box  has-background-light">
+            <article class="media">
+              <div class="media-left">
+                <figure class="image is-64x64">
+                  <%= image_tag(detail.product.avatar, alt: detail.product.name) %>
+                </figure>
+              </div>
+              <div class="media-content">
+                <div class="content">
+                  <div>Product: <%= detail.product.name %></div>
+                  <div>Genre: <%= render detail.product.genres %></div>
+                  <div>Price: <%= detail.purchased_price %></div>
+                  <div>Quantity: <%= detail.purchased_quantity %></div>
+                  <div>Description: <%= detail.product.description %></div>
+                </div>
+              </div>
+
+            </article>
+          </div>
+        <% end %>
+    </div>
+
+    <br/><br/>
+
+  <% end %>
+</div>
+
